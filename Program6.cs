@@ -9,36 +9,29 @@ namespace _22._03
 {
     class Program6
     {
-        public delegate int ComparisonDelegate(int a, int b);
-
-        static int Min(int[] array, ComparisonDelegate comparer)
-        {
-            int minIndex = 0;
-            for (int i = 1; i < array.Length; i++)
-            {
-                if (comparer(array[minIndex], array[i]) > 0)
-                {
-                    minIndex = i;
-                }
-            }
-            return array[minIndex];
-        }
-
         static void Main()
         {
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            int[] numbers = { 5, 8, 3, 1, 2, 9, 4, 7, 6 };
+            int[] array = { 5, 3, 6, 2, 8 };
 
-            int min = Min(numbers, (a, b) => a - b);
+            Func<int[], int> findMinimum = (numbers) =>
+            {
+                int min = numbers[0];
+                for (int i = 1; i < numbers.Length; i++)
+                {
+                    if (numbers[i] < min)
+                    {
+                        min = numbers[i];
+                    }
+                }
+                return min;
+            };
 
-            Console.WriteLine($"Мінімальне значення: {min}");
-
-            min = Min(numbers, (a, b) => b - a);
-
-            Console.WriteLine($"Максимальне значення: {min}");
+            int minimum = findMinimum(array);
+            Console.WriteLine($"Мінімальне значення в масиві: {minimum}");
         }
     }
 }
