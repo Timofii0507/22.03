@@ -15,12 +15,15 @@ namespace _22._03
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            int[] array = { -1, 2, 3, -4, 5, -6, 7 };
+            int[] array = { -1, -3, -2, -4, -3, -2, -1, 5, 7, -8 };
 
-            Func<int[], int> countPositiveNumbers = (numbers) => numbers.Count(n => n > 0);
+            var uniqueNegativeNumbers = array.Where(n => n < 0).Distinct();
 
-            int count = countPositiveNumbers(array);
-            Console.WriteLine($"Кількість позитивних чисел у масиві: {count}");
+            Console.WriteLine("Унікальні негативні числа:");
+            foreach (var number in uniqueNegativeNumbers)
+            {
+                Console.WriteLine(number);
+            }
         }
     }
 }
