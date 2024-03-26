@@ -25,7 +25,7 @@ namespace _22._03
             {"Індиго", (75, 0, 130)},
             {"Фіолетовий", (238, 130, 238)}
         };
-
+             
             Func<string, (int, int, int)> getRainbowColor = (colorName) =>
             {
                 if (rainbowColors.TryGetValue(colorName, out var rgb))
