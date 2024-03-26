@@ -8,37 +8,16 @@ namespace _22._03
 {
     class Program3
     {
-        delegate int CubeDelegate(int number);
-
-        event CubeDelegate OnCubeCalculated;
-
-        static void Main(string[] args)
+        static void Main()
         {
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            var program = new Program3();
+            Func<int, int> cube = number => number * number * number;
 
-            CubeDelegate cube = number => number * number * number;
-
-            program.OnCubeCalculated += cube;
-
-            int testNumber = 3;
-            int cubeResult = program.CalculateCube(testNumber);
-            Console.WriteLine($"Куб числа {testNumber} дорівнює {cubeResult}");
-        }
-
-        public int CalculateCube(int number)
-        {
-            if (OnCubeCalculated != null)
-            {
-                return OnCubeCalculated(number);
-            }
-            else
-            {
-                throw new InvalidOperationException("Немає підписників на подію OnCubeCalculated.");
-            }
+            Console.WriteLine("Куб числа 3: " + cube(3)); 
+            Console.WriteLine("Куб числа 4: " + cube(4)); 
         }
     }
 }
