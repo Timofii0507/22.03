@@ -15,36 +15,22 @@ namespace _22._03
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            Dictionary<string, (int, int, int)> rainbowColors = new Dictionary<string, (int, int, int)>
-        {
-            {"Червоний", (255, 0, 0)},
-            {"Помаранчевий", (255, 165, 0)},
-            {"Жовтий", (255, 255, 0)},
-            {"Зелений", (0, 128, 0)},
-            {"Блакитний", (0, 0, 255)},
-            {"Індиго", (75, 0, 130)},
-            {"Фіолетовий", (238, 130, 238)}
-        };
-
-            Func<string, (int, int, int)> getRainbowColor = (colorName) =>
+            Backpack myBackpack = new Backpack
             {
-                if (rainbowColors.TryGetValue(colorName, out var rgb))
-                {
-                    return rgb;
-                }
-                else
-                {
-                    throw new ArgumentException("Невідомий колір");
-                }
+                Color = "Червоний",
+                Brand = "High Sierra",
+                Fabric = "Нейлон",
+                Weight = 0.5,
+                Volume = 30
             };
 
             try
             {
-                var colorName = "Зелений";
-                var rgbValue = getRainbowColor(colorName);
-                Console.WriteLine($"RGB значення для кольору {colorName}: ({rgbValue.Item1}, {rgbValue.Item2}, {rgbValue.Item3})");
+                myBackpack.AddItem(new Item("Книга", 1.5));
+                myBackpack.AddItem(new Item("Пляшка води", 2.0));
+                myBackpack.AddItem(new Item("Намет", 35.0));
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
                 Console.WriteLine(ex.Message);
             }
