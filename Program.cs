@@ -15,20 +15,12 @@ namespace _22._03
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            int[] array = { 14, 21, 28, 4, 7, 35, 42 };
-            Func<int[], int> countMultiplesOfSeven = (numbers) =>
-            {
-                int count = 0;
-                foreach (var num in numbers)
-                {
-                    if (num % 7 == 0)
-                        count++;
-                }
-                return count;
-            };
+            int[] array = { -1, 2, 3, -4, 5, -6, 7 };
 
-            int result = countMultiplesOfSeven(array);
-            Console.WriteLine($"Кількість чисел кратних семи: {result}");
+            Func<int[], int> countPositiveNumbers = (numbers) => numbers.Count(n => n > 0);
+
+            int count = countPositiveNumbers(array);
+            Console.WriteLine($"Кількість позитивних чисел у масиві: {count}");
         }
     }
 }
