@@ -15,15 +15,13 @@ namespace _22._03
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            int[] array = { -1, -3, -2, -4, -3, -2, -1, 5, 7, -8 };
+            Func<string, string, bool> containsWord = (text, word) => text.Contains(word);
 
-            var uniqueNegativeNumbers = array.Where(n => n < 0).Distinct();
+            string sampleText = "Це приклад рядка для тестування.";
+            string wordToFind = "приклад";
 
-            Console.WriteLine("Унікальні негативні числа:");
-            foreach (var number in uniqueNegativeNumbers)
-            {
-                Console.WriteLine(number);
-            }
+            bool result = containsWord(sampleText, wordToFind);
+            Console.WriteLine($"Чи містить рядок слово '{wordToFind}': {result}");
         }
     }
 }
