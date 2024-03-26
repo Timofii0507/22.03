@@ -15,25 +15,20 @@ namespace _22._03
             Console.OutputEncoding = Encoding.Unicode;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.CursorVisible = false;
-            Backpack myBackpack = new Backpack
+            int[] array = { 14, 21, 28, 4, 7, 35, 42 };
+            Func<int[], int> countMultiplesOfSeven = (numbers) =>
             {
-                Color = "Червоний",
-                Brand = "High Sierra",
-                Fabric = "Нейлон",
-                Weight = 0.5,
-                Volume = 30
+                int count = 0;
+                foreach (var num in numbers)
+                {
+                    if (num % 7 == 0)
+                        count++;
+                }
+                return count;
             };
 
-            try
-            {
-                myBackpack.AddItem(new Item("Книга", 1.5));
-                myBackpack.AddItem(new Item("Пляшка води", 2.0));
-                myBackpack.AddItem(new Item("Намет", 35.0));
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            int result = countMultiplesOfSeven(array);
+            Console.WriteLine($"Кількість чисел кратних семи: {result}");
         }
     }
 }
